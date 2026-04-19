@@ -1,45 +1,103 @@
-# Cybersecurity Lab (Kali Linux + Metasploitable2)
+#  Cybersecurity Lab Report
 
-## Objective
+**Internship:** APEX PLANET
+**Task:** 01 – Build a Hacking Lab & Perform Exploitation
 
-To set up a penetration testing lab and perform vulnerability scanning, exploitation, and privilege escalation.
+---
 
-## Tools Used
+##  Objective
 
-* Kali Linux (Attacker)
-* Metasploitable2 (Target)
-* UTM (Virtualization)
-* Nmap
-* Telnet
+To build a penetration testing lab environment and perform vulnerability assessment, exploitation, and privilege escalation on a vulnerable system.
 
-## Network Configuration
 
-* Kali Linux IP: 192.168.64.X
-* Metasploitable IP: 192.168.128.3
+## Lab Setup
 
-## Scanning Phase
+###  Attacker Machine
 
-Command used:
+* Kali Linux (UTM Virtual Machine)
+
+###  Target Machine
+
+* Metasploitable2 (Vulnerable Linux System)
+
+
+##  Network Configuration
+
+* Network Type: Host-Only
+* Kali Linux IP: 192.168.128.X
+* Target IP: 192.168.128.3
+
+
+##  Phase 1: Reconnaissance & Scanning
+
+### Command Used:
+
 nmap -A 192.168.128.3
 
-## Exploitation Phase
-Used Telnet with default credentials:
+### Key Findings:
+
+* Multiple open ports detected
+* Services identified:
+
+  * FTP (vsftpd 2.3.4)
+  * Telnet
+  * SMB (Samba 3.0.20)
+  * HTTP (Apache 2.2.8)
+
+
+##  Phase 2: Exploitation (Initial Access)
+
+Used Telnet service with default credentials:
+
 telnet 192.168.128.3
 
-## Privilege Escalation
-Used Nmap interactive mode:
+Credentials:
+
+Username: msfadmin
+Password: msfadmin
+
+### Result:
+
+* Successfully gained access to target system as low-privilege user
+
+
+##  Phase 3: Privilege Escalation
+
+Used vulnerable Nmap interactive mode:
+
 nmap --interactive
 !sh
 
-## Result
+
+### Result:
 whoami → root
 
-Full system access achieved.
+* Full administrative (root) access obtained
+
+##  Final Outcome
+
+* Successfully compromised the system
+* Achieved root-level access
+* Demonstrated complete attack lifecycle
+
+
+##  Key Learnings
+
+* Importance of network scanning and enumeration
+* Risks of weak/default credentials
+* Real-world exploitation workflow
+* Privilege escalation techniques
+* Difference between automated and manual exploitation
+
+
+##  Ethical Note
+
+This lab was conducted in a controlled environment using intentionally vulnerable systems.
+No real systems were harmed.
+
 
 ##  Conclusion
 
-This lab demonstrates how weak credentials and vulnerable services can lead to complete system compromise.
+This lab provided hands-on experience in penetration testing, from reconnaissance to full system compromise. It highlights how misconfigurations and weak security practices can lead to critical vulnerabilities.
 
-##  Link for Video (LinkedIn)
-https://www.linkedin.com/posts/sakshii-yadav-b46742376_cybersecurity-ethicalhacking-kalilinux-ugcPost-7442908407327674370-mVOP?utm_source=share&utm_medium=member_desktop&rcm=ACoAAF0Di-YBIckNK1B5vQM_opxCZ4VV68c8Y58
 
